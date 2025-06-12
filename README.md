@@ -1,5 +1,5 @@
 # Instant-Portfolio-Builder-Web-App
-IITSOC'2K25
+IITISOC'2K25
 <br>
 Members:
 <br>
