@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder</title>
+    <link rel="stylesheet" href="builder.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h1>⚡XFolio</h1>
+            <h2 id = "Enter">Enter Your details</h2>
+            <form id="portfolioForm">
+                <div class="form-group">
+                    <label for="userName">Your Name:</label>
+                    <input type="text" id="userName" placeholder="Enter your Name.." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userProfession">Profession/Title:</label>
+                    <input type="text" id="userProfession" placeholder="e.g., Web Developer">
+                </div>
+
+                <div class="form-group">
+                    <label for="userBio">Bio/About Me:</label>
+                    <textarea id="userBio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="userImage">Upload Your Image:</label>
+                    <input type="file" id="userImage" accept="image/*">
+                    
+                </div>
+
+                <h2>Skills</h2>
+                <div id="skillsContainer">
+                    <div class="skill-item form-group">
+                        <input type="text" class="skill-input" placeholder="e.g. HTML">
+                        <button type="button" class="remove-skill-btn">Remove</button>
+                    </div>
+                </div>
+                <button type="button" id="addSkillBtn">Add Skill</button>
+
+                <h2>Experience</h2>
+                <div id="experienceContainer">
+                    <div class="experience-item form-group">
+                        <input type="text" class="experience-title" placeholder="Job Title">
+                        <input type="text" class="experience-company" placeholder="Company">
+                        <input type="text" class="experience-duration" placeholder="e.g., Jan 2020 - Dec 2022">
+                        <textarea class="experience-description" rows="3" placeholder="Responsibilities and achievements..."></textarea>
+                        <button type="button" class="remove-experience-btn">Remove</button>
+                    </div>
+                </div>
+                <button type="button" id="addExperienceBtn">Add Experience</button>
+
+                <h2>Projects</h2>
+                <div id="projectsContainer">
+                    <div class="project-item form-group">
+                        <input type="text" class="project-title" placeholder="Project Title">
+                        <input type="url" class="project-link" placeholder="Project URL (optional)">
+                        <input type="text" class="project-techstack" placeholder="Tech Stack (e.g., React, Node.js)">
+                        <textarea class="project-description" rows="3" placeholder="Brief description of the project..."></textarea>
+                        <button type="button" class="remove-project-btn">Remove</button>
+                    </div>
+                </div>
+                <button type="button" id="addProjectBtn">Add Project</button>
+
+                <h2>Contact Information</h2>
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" id="userEmail" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="userLinkedIn">LinkedIn URL:</label>
+                    <input type="url" id="userLinkedIn" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+                <div class="form-group">
+                    <label for="userGithub">GitHub URL:</label>
+                    <input type="url" id="userGithub" placeholder="https://github.com/yourusername">
+                </div>
+
+                <button type="submit">Generate Portfolio (Client-Side Preview Only)</button>
+            </form>
+        </div>
+
+        <div class="preview-section">
+            <h2>Live Preview</h2>
+            <div id="portfolioPreview" class="portfolio-card">
+                <div class="preview-header">
+                    <img id="previewImage" src="placeholder.png" alt="Profile pic here" class="profile-image">
+                    <h3 id="previewName">Your Name</h3>
+                    <p id="previewProfession">Your Profession</p>
+                </div>
+                <div class="preview-section-content">
+                    <h4>About Me</h4>
+                    <p id="previewBio">A brief description about yourself will appear here.</p>
+                </div>
+                <div class="preview-section-content">
+                    <h4>Skills</h4>
+                    <ul id="previewSkills">
+                        <li>Skill-1</li>
+                        <li>Skill-2</li>
+                        <li>Skill-3</li>
+                    </ul>
+                </div>
+                <div class="preview-section-content">
+                    <h4>Experience</h4>
+                    <div id="previewExperience">
+                        <div class="preview-experience-item">
+                            <h5>Job Title</h5>
+                            <p class="duration">Jan 20XX - Dec 20YY</p>
+                            <p>Responsibilities and achievements...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-section-content">
+                    <h4>Projects</h4>
+                    <div id="previewProjects">
+                        <div class="preview-project-item">
+                            <h5>Project Title</h5>
+                            <a href="#" target="_blank">Project Link</a>
+                            <p class="tech-stack">Tech Stack: React, Node.js</p>
+                            <p>Brief description of the project...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-section-content">
+                    <h4>Contact</h4>
+                    <p>Email: <span id="previewEmail">your.email@example.com</span></p>
+                    <p>LinkedIn: <a href="#" id="previewLinkedIn" target="_blank">LinkedIn Profile</a></p>
+                    <p>GitHub: <a href="#" id="previewGithub" target="_blank">GitHub Profile</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="builder.js"></script>
+</body>
+</html>
