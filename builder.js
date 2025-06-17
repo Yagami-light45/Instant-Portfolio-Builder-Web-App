@@ -109,6 +109,7 @@ function handleImageUpload(event) {
     const reader = new FileReader();
     reader.onload = function (e) {
       previewImage.src = e.target.result;
+      localStorage.setItem("imageDataURL", e.target.result);
     };
     reader.readAsDataURL(file);
   }
@@ -173,7 +174,7 @@ addProjectBtn.addEventListener("click", () => {
   addProject();
 });
 
-// Delegated removal for dynamic buttons
+// removal for dynamic buttons
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("remove-skill-btn")) {
     e.target.parentElement.remove();
@@ -184,5 +185,50 @@ document.addEventListener("click", function (e) {
   } else if (e.target.classList.contains("remove-project-btn")) {
     e.target.parentElement.remove();
     updateProjects();
+  }
+});
+document.getElementById('portfolioForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const file = document.getElementById('userImage').files[0];
+  const oldImage = localStorage.getItem("imageDataURL") || "placeholder.png";
+
+  const collectAndSave = (imageDataURL) => {
+    const userData = {
+      name: userName.value,
+      profession: userProfession.value,
+      bio: userBio.value,
+      email: userEmail.value,
+      linkedin: userLinkedIn.value,
+      github: userGithub.value,
+      imageDataURL,
+      skills: [...document.querySelectorAll('.skill-input')].map(input => input.value),
+      experience: [...document.querySelectorAll('.experience-item')].map(item => ({
+        title: item.querySelector('.experience-title').value,
+        company: item.querySelector('.experience-company').value,
+        duration: item.querySelector('.experience-duration').value,
+        description: item.querySelector('.experience-description').value
+      })),
+      projects: [...document.querySelectorAll('.project-item')].map(item => ({
+        title: item.querySelector('.project-title').value,
+        link: item.querySelector('.project-link').value,
+        techStack: item.querySelector('.project-techstack').value,
+        description: item.querySelector('.project-description').value
+      }))
+    };
+
+    localStorage.setItem('portfolioData', JSON.stringify(userData));
+    localStorage.setItem('imageDataURL', imageDataURL); 
+    window.location.href = 'user-portfolio.html';
+  };
+
+  if (file && file.type.startsWith("image/")) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      collectAndSave(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    collectAndSave(oldImage);
   }
 });

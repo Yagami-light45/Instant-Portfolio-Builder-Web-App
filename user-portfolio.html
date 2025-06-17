@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Portfolio</title>
+  <link rel="stylesheet" href="user-portfolio.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar glass-navbar">
+    <div class="navbar-container">
+      <div class="logo">My Portfolio</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+     <button class="hamburger" aria-label="Toggle navigation">☰</button>
+
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <div class="profile">
+      <img id="displayImage" src="placeholder.png" alt="Profile Picture" />
+      <h1 id="displayName">Your Name</h1>
+      <p class="subtitle" id="displayProfession">Your Profession</p>
+    </div>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p id="displayBio">Short bio…</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills" id="displaySkills"></ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div id="displayExperience"></div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div id="displayProjects"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <span id="displayEmail"></span></p>
+      <p>LinkedIn: <a id="displayLinkedIn" href="#" target="_blank">Profile</a></p>
+      <p>GitHub: <a id="displayGithub" href="#" target="_blank">Repository</a></p>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 XFolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="user-portfolio.js"></script>
+</body>
+</html>
