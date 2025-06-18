@@ -92,7 +92,8 @@ header {
   text-align: center;
   padding: 80px 20px;
   background-color: #3c096c;
-  background-image: url(ocean.png);
+  background-image: url('../../public/images/ocean.png');
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

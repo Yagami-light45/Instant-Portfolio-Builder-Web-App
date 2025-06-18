@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url(bgblur.png);
+  background-image: url(../../public/images/bgblur.png);
    scroll-behavior: smooth;
   
   color: #333;

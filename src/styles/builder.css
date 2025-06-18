@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+    scroll-behavior: smooth;
     padding: 1.875rem 1.25rem; 
     box-sizing: border-box;
 }
