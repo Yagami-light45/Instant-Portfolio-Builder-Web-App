@@ -34,6 +34,9 @@ const projectsContainer = document.querySelector("#projectsContainer");
 const addProjectBtn = document.querySelector("#addProjectBtn");
 const previewProjects = document.querySelector("#previewProjects");
 
+// document.getElementById('menu-toggle').addEventListener('click', () => {
+//     document.getElementById('nav-links').classList.toggle('show');
+// });
 // Update Functions
 function updateBasicInfo() {
   previewName.innerText = userName.value || "Your Name";
@@ -232,3 +235,55 @@ document.getElementById('portfolioForm').addEventListener('submit', function (e)
     collectAndSave(oldImage);
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("themeToggle");
+  const resetBtn = document.getElementById("resetBtn");
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("nav-links");
+  const storedImage = localStorage.getItem("imageDataURL");
+
+  // ✅ Use stored image if exists, otherwise fallback to placeholder
+  previewImage.src = storedImage || "public/images/placeholder.png";
+
+  
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    themeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+  });
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  resetBtn.addEventListener("click", () => {
+    const form = document.getElementById("portfolioForm");
+    if (form) form.reset();
+
+    document.getElementById("previewName").textContent = "Your Name";
+    document.getElementById("previewProfession").textContent = "Your Profession";
+    document.getElementById("previewBio").textContent = "A brief description about yourself will appear here.";
+    document.getElementById("previewSkills").innerHTML = `
+      <li>Skill-1</li><li>Skill-2</li><li>Skill-3</li>`;
+    document.getElementById("previewExperience").innerHTML = `
+      <div class="preview-experience-item">
+        <h5>Job Title</h5>
+        <p class="duration">Jan 20XX - Dec 20YY</p>
+        <p>Responsibilities and achievements...</p>
+      </div>`;
+    document.getElementById("previewProjects").innerHTML = `
+      <div class="preview-project-item">
+        <h5>Project Title</h5>
+        <a href="#" target="_blank">Project Link</a>
+        <p class="tech-stack">Tech Stack: React, Node.js</p>
+        <p>Brief description of the project...</p>
+      </div>`;
+    document.getElementById("previewEmail").textContent = "your.email@example.com";
+    document.getElementById("previewLinkedIn").href = "#";
+    document.getElementById("previewLinkedIn").textContent = "LinkedIn Profile";
+    document.getElementById("previewGithub").href = "#";
+    document.getElementById("previewGithub").textContent = "GitHub Profile";
+    document.getElementById("previewImage").src = "/public/images/placeholder.png";
+
+  });
+});
+

@@ -1,5 +1,22 @@
 
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const toggleBtn = document.getElementById("menu-toggle");
+//   const navLinks = document.getElementById("nav-links");
+//   toggleBtn.addEventListener("click", () => {
+//     navLinks.classList.toggle("show");
+//   });
+
+  
+//   const themeToggle = document.getElementById("theme-toggle");
+//   themeToggle.addEventListener("click", () => {
+//     document.body.classList.toggle("light-mode");
+
+    
+//     themeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+//   });
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
   const data = JSON.parse(localStorage.getItem('portfolioData'));
   if (!data) return;
@@ -16,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (data.imageDataURL) {
     document.getElementById('displayImage').src = data.imageDataURL;
   } else {
-    document.getElementById('displayImage').src = 'https://via.placeholder.com/150';
+    document.getElementById('displayImage').src = '../../public/images/placeholder.png';
+
   }
 
 
@@ -54,10 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
     projectContainer.appendChild(div);
   });
 
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
+ const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const navItems = document.querySelectorAll('.nav-links a'); 
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+
+navItems.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
   });
+});
 });

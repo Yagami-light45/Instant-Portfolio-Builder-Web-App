@@ -63,7 +63,7 @@ p {
   color: #333;
 }
 .hamburger {
-  display: none; /* Hidden by default on desktop */
+  display: none;
   background: none;
   border: none;
   color: #2c3e50;
@@ -151,7 +151,9 @@ section h2 {
     text-decoration: none;
     font-weight: bold;
 }
-
+#about,#skills,#experience,#projects,#contact {
+  scroll-margin-top: 6rem;
+}
 .project-item a:hover {
     text-decoration: underline;
 }
@@ -201,7 +203,7 @@ section h2 {
   
   h1 { font-size: 2.5rem; }
   .hero { padding: 6rem 1rem 4rem; }
-  .profile { margin-top: -60px; }
+  
   .profile img { width: 120px; height: 120px; }
 }
 
