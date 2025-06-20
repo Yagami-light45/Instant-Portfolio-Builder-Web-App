@@ -1,7 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 1.875rem 1.25rem;
     background: linear-gradient(135deg, #0A0A2A 0%, #1A0A3A 100%);
     color: #E0E0E0;
     display: flex;
@@ -13,7 +12,7 @@ body {
 }
 
 body.light-mode {
-    background: linear-gradient(135deg, #F0F0F0, #FFFFFF);
+background: linear-gradient(135deg, #f0e6f7, #8a8dc7);
     color: #222;
 }
 
@@ -29,8 +28,9 @@ body.light-mode {
 
 .navbar {
     width: 100%;
+    margin-top : 0.75rem;
     background: rgba(20, 20, 40, 0.7);
-    padding: 1rem;
+    padding: 0.75rem ;  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,10 +73,10 @@ body.light-mode .navbar .brand:hover {
 
 .nav-links {
     list-style: none;
-    display: flex;
+    display: flex;   
     gap: 2rem;
     align-items: center;
-    margin: 0;
+    margin-top: -4px;
     padding: 0;
 }
 
@@ -85,9 +85,10 @@ body.light-mode .navbar .brand:hover {
     color: #E0E0E0;
     text-decoration: none;
     font-size: 1.1rem;
-    font-weight: 500;
+    /* font-weight: 500; */
     background: none;
-    border: none;
+    border: 0.3px solid rgb(86, 151, 254);
+     box-shadow: 0 0 0.175rem rgba(0, 123, 255, 0.6), 0 0 1.5625rem rgba(0, 123, 255, 0.4);
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
@@ -112,7 +113,7 @@ body.light-mode .nav-links li button:hover {
     background: rgba(0, 123, 255, 0.1);
 }
 
-.nav-links li button#theme-toggle {
+.nav-links li button #theme-toggle {
     font-size: 1.25rem;
     padding: 0.5rem;
     display: flex;
@@ -148,6 +149,7 @@ body.light-mode .hamburger:hover {
 .input-section,
 .preview-section {
     flex: 1;
+    margin-top: -1.4rem;
     min-width: 28.125rem;
     background: rgba(20, 20, 40, 0.7);
     backdrop-filter: blur(0.3125rem);
