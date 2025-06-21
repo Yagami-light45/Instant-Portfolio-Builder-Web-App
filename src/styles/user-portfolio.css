@@ -1,47 +1,81 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url(../../public/images/bgblur.png);
-  scroll-behavior: smooth;
-  color: #333;
+/* ==========================================================================
+   Base & Layout Styles
+   ========================================================================== */
+
+*{
+margin : 0;
+padding : 0;
+
+}  
+ body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../../public/images/bgblur.png');
+    background-color: #f4f4f4;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    color: #333;
+    transition: background-color 0.8s ease, color 0.8s ease, background-image 0.8s ease;
 }
 
 .container {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 p {
-  overflow-wrap: break-word;
-  word-wrap: break-word; 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
+#about, #skills, #experience, #projects, #contact {
+    scroll-margin-top: 6rem;
+}
+
+/* ==========================================================================
+   Glass Navbar
+   ========================================================================== */
 .glass-navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 0.8rem 0; /* Vertical spacing */
+  transition: background-color 0.8s ease, border-color 0.8s ease;
 }
 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 2rem; /* Horizontal spacing */
+}
+
+.logo { 
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.8s ease;
+  flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1; /* Allow nav links area to expand */
 }
 
 .nav-links li a {
@@ -55,190 +89,322 @@ p {
   color: #007BFF;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0; 
 }
 
 .hamburger {
   display: none;
   background: none;
   border: none;
-  color: #2c3e50;
   font-size: 1.5rem;
+  color: #2c3e50;
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  right: 2rem;
-  transform: translateY(-50%);
+  transition: color 0.8s ease;
 }
 
+/* ==========================================================================
+   Dark Mode Toggle Button
+   ========================================================================== */
+.dark-mode-toggle {
+    position: relative;
+    background-color: #e0e0e0;
+    border: 2px solid #333;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #d0d0d0;
+}
+
+.dark-mode-toggle i {
+    font-size: 1.5rem;
+    position: absolute;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.sun-icon {
+    color: #f39c12;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.moon-icon {
+    color: #8e44ad;
+    transform: translateY(150%);
+    opacity: 0;
+}
+
+/* ==========================================================================
+   Content Sections
+   ========================================================================== */
 .profile {
-  text-align: center;
-  margin-top: 8rem; 
-  margin-bottom: 3rem;
+    text-align: center;
+    margin-top: 6rem;
+    /* margin-bottom: 3rem; */
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+    /* padding: 1rem; */
 }
 
 .profile img {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: border-color 0.8s ease;
 }
 
 .subtitle {
-  color: #555;
-  font-size: 1.2rem;
+    color: #555;
+    font-size: 1.2rem;
+    transition: color 0.8s ease;
 }
 
 section {
-  margin-top: 2rem;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+    margin-bottom: 2rem;
+    padding: 0.75rem 2rem 2rem 2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: background-color 0.8s ease, border-color 0.8s ease;
 }
 
 section h2 {
-  border-bottom: 2px solid #007BFF;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
+    border-bottom: 2px solid #007BFF;
+    
+    /* margin-bottom: 0.5rem; */
+    transition: border-color 0.8s ease;
 }
 
 .skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0;
 }
 
 .skills li {
-  list-style: none;
-  background: #0070f3;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 500;
-}
-
-.experience-item, .project-item {
-  margin-bottom: 1.5rem;
+    list-style: none;
+    background: #0070f3;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background-color 0.8s ease;
 }
 
 .experience-item h3, .project-item h3 {
-  color: #0056b3;
+    color: #0056b3;
+    transition: color 0.8s ease;
 }
 
 .duration {
-  font-style: italic;
-  color: #666;
-  margin-bottom: 0.5rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+    transition: color 0.8s ease;
 }
 
 .project-item a {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  color: #007BFF;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-#about, #skills, #experience, #projects, #contact {
-  scroll-margin-top: 6rem;
-}
-
-.project-item a:hover {
-  text-decoration: underline;
+    color: #007BFF;
+    transition: color 0.8s ease;
 }
 
 .tech-stack {
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 0.5rem;
+    color: #555;
+    transition: color 0.8s ease;
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .footer {
+  margin-top : 5rem;
     background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 -8px 32px rgba(31, 38, 135, 0.37);
-  
-  /* padding: rem 0; */
-  /* margin-top: 2rem; */
-  
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    /* padding: 0.5rem 1rem; Reduced height */
+    margin-top : -40px;
+    transition: background-color 0.8s ease, border-color 0.8s ease, color 0.8s ease;
 }
 
 .footer-content {
-  max-width: 960px;
-  margin: 0 auto;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 .footer-links {
-  margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 .footer-links a {
-  margin: 0 1rem;
-  font-size: 1.4rem;
-  color: #333;
-  transition: color 0.3s ease, transform 0.3s ease;
+    margin: 0 1rem;
+    font-size: 1.4rem;
+    color: #333;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #007BFF;
-  transform: scale(1.1);
+    color: #007BFF;
+    transform: scale(1.1);
 }
 
 .footer-note {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #555;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    transition: color 0.8s ease;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; 
-    flex-direction: column;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
+/* ==========================================================================
+   DARK MODE STYLES
+   ========================================================================== */
+body.dark-mode {
+    background-color: #0f1624;
+    background-image: url('../../public/images/bgblur.png');;
+    color: #ffffff;
+}
 
-  .nav-links.active {
-    display: flex;
-  }
+body.dark-mode .glass-navbar {
+    background-color: rgba(10, 20, 40, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+}
 
-  .nav-links li {
-    text-align: center;
-    padding: 0.5rem 0;
-  }
+body.dark-mode .logo,
+body.dark-mode .nav-links li a,
+body.dark-mode .hamburger,
+body.dark-mode .footer-links a {
+    color: #ffffff;
+}
 
-  .hamburger {
-    display: block; 
-  }
+body.dark-mode .nav-links li a:hover,
+body.dark-mode .footer-links a:hover {
+    color: #1e90ff;
+}
 
-  h1 { font-size: 2.5rem; }
-  .hero { padding: 6rem 1rem 4rem; }
+body.dark-mode .dark-mode-toggle {
+    background-color: #2c3e50;
+    /* border-color: #ffffff; */
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: #34495e;
+}
+
+body.dark-mode .sun-icon {
+    transform: translateY(-150%);
+    opacity: 0;
+}
+
+body.dark-mode .moon-icon {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* body.dark-mode .profile {
+    border: 1px solid #2c3e50;
+} */
+
+body.dark-mode .profile img {
+    border-color: #333;
+}
+
+body.dark-mode .subtitle {
+    color: #cccccc;
+}
+
+body.dark-mode section {
+    background-color: rgba(20, 30, 50, 0.5);
+    border: 1px solid #2c3e50;
+}
+
+body.dark-mode section h2 {
+    border-color: #1e90ff;
+}
+
+body.dark-mode .skills li {
+    background: #1e90ff;
+}
+
+body.dark-mode .experience-item h3,
+body.dark-mode .project-item h3,
+body.dark-mode .project-item a {
+    color: #1e90ff;
+}
+
+body.dark-mode .duration,
+body.dark-mode .tech-stack,
+body.dark-mode .footer-note {
+    color: #aaaaaa;
+}
+
+body.dark-mode .footer {
   
-  .profile img { width: 120px; height: 120px; }
+  
+    background: rgba(10, 20, 40, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top : -40px;
+    /* padding: 0.5rem 0rem; Reduced height in dark mode */
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media(max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        top: 68px;
+        left: 0;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: background-color 0.8s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        position: static;
+        transform: none;
+    }
+
+    body.dark-mode .nav-links {
+        background-color: rgba(10, 20, 40, 0.95);
+    }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 2rem; }
-  .hero .subtitle { font-size: 1.2rem; }
-  .container { padding: 1rem; }
-  section { padding: 1.5rem; }
+    h1 { font-size: 2rem; }
+    .hero .subtitle { font-size: 1.2rem; }
+    .container { padding: 1rem; }
+    section { padding: 1.5rem; }
 }
