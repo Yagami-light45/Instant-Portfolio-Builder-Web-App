@@ -1,22 +1,5 @@
 
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const toggleBtn = document.getElementById("menu-toggle");
-//   const navLinks = document.getElementById("nav-links");
-//   toggleBtn.addEventListener("click", () => {
-//     navLinks.classList.toggle("show");
-//   });
-
-  
-//   const themeToggle = document.getElementById("theme-toggle");
-//   themeToggle.addEventListener("click", () => {
-//     document.body.classList.toggle("light-mode");
-
-    
-//     themeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
-//   });
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   const data = JSON.parse(localStorage.getItem('portfolioData'));
   if (!data) return;
@@ -51,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const div = document.createElement('div');
     div.className = 'experience-item';
     div.innerHTML = `
-      <h3>${exp.title} @ ${exp.company}</h3>
+      <h3>${exp.title} at ${exp.company}</h3>
       <p class="duration">${exp.duration}</p>
       <p>${exp.description}</p>
     `;
@@ -72,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     projectContainer.appendChild(div);
   });
 
- const hamburger = document.querySelector('.hamburger');
+const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const navItems = document.querySelectorAll('.nav-links a'); 
 

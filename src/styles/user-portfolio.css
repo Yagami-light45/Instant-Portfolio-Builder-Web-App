@@ -1,10 +1,8 @@
-
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-image: url(../../public/images/bgblur.png);
-   scroll-behavior: smooth;
-  
+  scroll-behavior: smooth;
   color: #333;
 }
 
@@ -13,11 +11,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 p {
   overflow-wrap: break-word;
   word-wrap: break-word; 
 }
-
 
 .glass-navbar {
   position: fixed;
@@ -62,6 +60,7 @@ p {
   font-weight: bold;
   color: #333;
 }
+
 .hamburger {
   display: none;
   background: none;
@@ -74,7 +73,6 @@ p {
   right: 2rem;
   transform: translateY(-50%);
 }
-
 
 .profile {
   text-align: center;
@@ -108,9 +106,9 @@ section {
 }
 
 section h2 {
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .skills {
@@ -129,49 +127,81 @@ section h2 {
   font-weight: 500;
 }
 
-
 .experience-item, .project-item {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .experience-item h3, .project-item h3 {
-    color: #0056b3;
+  color: #0056b3;
 }
 
 .duration {
-    font-style: italic;
-    color: #666;
-    margin-bottom: 0.5rem;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
 
 .project-item a {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
 }
-#about,#skills,#experience,#projects,#contact {
+
+#about, #skills, #experience, #projects, #contact {
   scroll-margin-top: 6rem;
 }
+
 .project-item a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .tech-stack {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
 }
 
-
 .footer {
+    background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
-  padding: 2rem 1rem;
-  margin-top: 3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 -8px 32px rgba(31, 38, 135, 0.37);
+  
+  /* padding: rem 0; */
+  /* margin-top: 2rem; */
+  
+}
+
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin: 1rem 0;
+}
+
+.footer-links a {
+  margin: 0 1rem;
+  font-size: 1.4rem;
+  color: #333;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #007BFF;
+  transform: scale(1.1);
+}
+
+.footer-note {
+  margin-top: 1rem;
   font-size: 0.9rem;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.7);
+  color: #555;
 }
 
 @media (max-width: 768px) {
@@ -200,7 +230,6 @@ section h2 {
     display: block; 
   }
 
-  
   h1 { font-size: 2.5rem; }
   .hero { padding: 6rem 1rem 4rem; }
   
@@ -208,9 +237,8 @@ section h2 {
 }
 
 @media (max-width: 480px) {
-    
-    h1 { font-size: 2rem; }
-    .hero .subtitle { font-size: 1.2rem; }
-    .container { padding: 1rem; }
-    section { padding: 1.5rem; }
+  h1 { font-size: 2rem; }
+  .hero .subtitle { font-size: 1.2rem; }
+  .container { padding: 1rem; }
+  section { padding: 1.5rem; }
 }

@@ -34,9 +34,7 @@ const projectsContainer = document.querySelector("#projectsContainer");
 const addProjectBtn = document.querySelector("#addProjectBtn");
 const previewProjects = document.querySelector("#previewProjects");
 
-// document.getElementById('menu-toggle').addEventListener('click', () => {
-//     document.getElementById('nav-links').classList.toggle('show');
-// });
+
 // Update Functions
 function updateBasicInfo() {
   previewName.innerText = userName.value || "Your Name";
