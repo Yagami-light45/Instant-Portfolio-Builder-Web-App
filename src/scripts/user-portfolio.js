@@ -112,6 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     projectContainer.appendChild(div);
                 });
             }
+        
+            const educationContainer = document.getElementById('displayEducation');
+            if (educationContainer && data.education) {
+            educationContainer.innerHTML = '';
+            data.education.forEach(ed => {
+                const div = document.createElement('div');
+                div.className = 'education-item';
+                div.innerHTML = `
+                <h3>${ed.degree || ''} at ${ed.institution || ''}</h3>
+                <p class="duration">${ed.duration || ''}</p>
+                <p>${ed.description || ''}</p>
+                `;
+                educationContainer.appendChild(div);
+            });
+            }
+
 
         } catch (error) {
             console.error("Failed to load or parse portfolio data:", error);

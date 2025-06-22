@@ -34,6 +34,11 @@ const projectsContainer = document.querySelector("#projectsContainer");
 const addProjectBtn = document.querySelector("#addProjectBtn");
 const previewProjects = document.querySelector("#previewProjects");
 
+//education
+const educationContainer  = document.querySelector("#educationContainer");
+const addEducationBtn     = document.querySelector("#addEducationBtn");
+const previewEducation    = document.querySelector("#previewEducation");
+
 
 // Update Functions
 function updateBasicInfo() {
@@ -104,6 +109,27 @@ function updateProjects() {
   });
 }
 
+function updateEducation() {
+  previewEducation.innerHTML = "";
+  const items = educationContainer.querySelectorAll(".education-item");
+  items.forEach(item => {
+    const inst = item.querySelector(".education-institution").value.trim();
+    const deg  = item.querySelector(".education-degree").value.trim();
+    const dur  = item.querySelector(".education-duration").value.trim();
+    const descr= item.querySelector(".education-description").value.trim();
+    if (inst || deg || dur || descr) {
+      const div = document.createElement("div");
+      div.classList.add("preview-education-item");
+      div.innerHTML = `
+        <h5>${deg ? deg : "Degree"} at ${inst ? inst : "Institution"}</h5>
+        <p class="duration">${dur || ""}</p>
+        <p>${descr || ""}</p>
+      `;
+      previewEducation.appendChild(div);
+    }
+  });
+}
+
 function handleImageUpload(event) {
   const file = event.target.files[0];
   if (file && file.type.startsWith("image/")) {
@@ -153,12 +179,26 @@ function addProject() {
   projectsContainer.appendChild(wrapper);
 }
 
+function addEducation() {
+  const wrapper = document.createElement("div");
+  wrapper.className = "education-item form-group";
+  wrapper.innerHTML = `
+    <input type="text" class="education-institution" placeholder="Institution Name">
+    <input type="text" class="education-degree" placeholder="Degree (e.g. B.Sc Computer Science)">
+    <input type="text" class="education-duration" placeholder="e.g., 2018 – 2022">
+    <textarea class="education-description" rows="2" placeholder="Notes, GPA, honors..."></textarea>
+    <button type="button" class="remove-education-btn">Remove</button>
+  `;
+  educationContainer.appendChild(wrapper);
+}
+
 // Event Listeners
 form.addEventListener("input", () => {
   updateBasicInfo();
   updateSkills();
   updateExperience();
   updateProjects();
+  updateEducation(); 
 });
 
 userImage.addEventListener("change", handleImageUpload);
@@ -175,6 +215,10 @@ addProjectBtn.addEventListener("click", () => {
   addProject();
 });
 
+addEducationBtn.addEventListener("click", () => {
+  addEducation();
+});
+
 // removal for dynamic buttons
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("remove-skill-btn")) {
@@ -186,6 +230,9 @@ document.addEventListener("click", function (e) {
   } else if (e.target.classList.contains("remove-project-btn")) {
     e.target.parentElement.remove();
     updateProjects();
+  } else if (e.target.classList.contains("remove-education-btn")) {
+    e.target.parentElement.remove();
+    updateEducation();
   }
 });
 document.getElementById('portfolioForm').addEventListener('submit', function (e) {
@@ -215,6 +262,12 @@ document.getElementById('portfolioForm').addEventListener('submit', function (e)
         link: item.querySelector('.project-link').value,
         techStack: item.querySelector('.project-techstack').value,
         description: item.querySelector('.project-description').value
+      })),
+      education: [...document.querySelectorAll('.education-item')].map(item => ({
+      institution: item.querySelector('.education-institution').value,
+      degree:      item.querySelector('.education-degree').value,
+      duration:    item.querySelector('.education-duration').value,
+      description: item.querySelector('.education-description').value
       }))
     };
 
