@@ -1,4 +1,3 @@
-
 const form = document.querySelector("#portfolioForm");
 
 // Basic inputs
@@ -34,21 +33,19 @@ const projectsContainer = document.querySelector("#projectsContainer");
 const addProjectBtn = document.querySelector("#addProjectBtn");
 const previewProjects = document.querySelector("#previewProjects");
 
-//education
-const educationContainer  = document.querySelector("#educationContainer");
-const addEducationBtn     = document.querySelector("#addEducationBtn");
-const previewEducation    = document.querySelector("#previewEducation");
+// Education
+const educationContainer = document.querySelector("#educationContainer");
+const addEducationBtn = document.querySelector("#addEducationBtn");
+const previewEducation = document.querySelector("#previewEducation");
 
-
-// Update Functions
 function updateBasicInfo() {
   previewName.innerText = userName.value || "Your Name";
   previewProfession.innerText = userProfession.value || "Your Profession";
   previewBio.innerText = userBio.value || "A brief description about yourself will appear here.";
-  previewEmail.innerText = userEmail.value;
-  previewLinkedIn.href = userLinkedIn.value;
+  previewEmail.innerText = userEmail.value || "Not provided";
+  previewLinkedIn.href = userLinkedIn.value || "#";
   previewLinkedIn.innerText = userLinkedIn.value ? "LinkedIn Profile" : "Not provided";
-  previewGithub.href = userGithub.value;
+  previewGithub.href = userGithub.value || "#";
   previewGithub.innerText = userGithub.value ? "GitHub Profile" : "Not provided";
 }
 
@@ -77,9 +74,9 @@ function updateExperience() {
       const div = document.createElement("div");
       div.classList.add("preview-experience-item");
       div.innerHTML = `
-        <h5>${title} at ${company}</h5>
-        <p class="duration">${duration}</p>
-        <p>${description}</p>
+        <h5>${title || "Untitled"} at ${company || "Company"}</h5>
+        <p class="duration">${duration || "Duration not specified"}</p>
+        <p>${description || "No description provided."}</p>
       `;
       previewExperience.appendChild(div);
     }
@@ -112,18 +109,18 @@ function updateProjects() {
 function updateEducation() {
   previewEducation.innerHTML = "";
   const items = educationContainer.querySelectorAll(".education-item");
-  items.forEach(item => {
+  items.forEach((item) => {
     const inst = item.querySelector(".education-institution").value.trim();
-    const deg  = item.querySelector(".education-degree").value.trim();
-    const dur  = item.querySelector(".education-duration").value.trim();
-    const descr= item.querySelector(".education-description").value.trim();
+    const deg = item.querySelector(".education-degree").value.trim();
+    const dur = item.querySelector(".education-duration").value.trim();
+    const descr = item.querySelector(".education-description").value.trim();
     if (inst || deg || dur || descr) {
       const div = document.createElement("div");
       div.classList.add("preview-education-item");
       div.innerHTML = `
-        <h5>${deg ? deg : "Degree"} at ${inst ? inst : "Institution"}</h5>
-        <p class="duration">${dur || ""}</p>
-        <p>${descr || ""}</p>
+        <h5>${deg || "Degree"} at ${inst || "Institution"}</h5>
+        <p class="duration">${dur || "Duration not specified"}</p>
+        <p>${descr || "No additional details."}</p>
       `;
       previewEducation.appendChild(div);
     }
@@ -142,7 +139,6 @@ function handleImageUpload(event) {
   }
 }
 
-//Dynamic Add/Remove Fields
 function addSkill() {
   const wrapper = document.createElement("div");
   wrapper.className = "skill-item form-group";
@@ -184,8 +180,8 @@ function addEducation() {
   wrapper.className = "education-item form-group";
   wrapper.innerHTML = `
     <input type="text" class="education-institution" placeholder="Institution Name">
-    <input type="text" class="education-degree" placeholder="Degree (e.g. B.Sc Computer Science)">
-    <input type="text" class="education-duration" placeholder="e.g., 2018 – 2022">
+    <input type="text" class="education-degree" placeholder="Degree (e.g., B.Sc Computer Science)">
+    <input type="text" class="education-duration" placeholder="e.g., 2018 – 2022">
     <textarea class="education-description" rows="2" placeholder="Notes, GPA, honors..."></textarea>
     <button type="button" class="remove-education-btn">Remove</button>
   `;
@@ -198,28 +194,16 @@ form.addEventListener("input", () => {
   updateSkills();
   updateExperience();
   updateProjects();
-  updateEducation(); 
+  updateEducation();
 });
 
 userImage.addEventListener("change", handleImageUpload);
 
-addSkillBtn.addEventListener("click", () => {
-  addSkill();
-});
+addSkillBtn.addEventListener("click", addSkill);
+addExperienceBtn.addEventListener("click", addExperience);
+addProjectBtn.addEventListener("click", addProject);
+addEducationBtn.addEventListener("click", addEducation);
 
-addExperienceBtn.addEventListener("click", () => {
-  addExperience();
-});
-
-addProjectBtn.addEventListener("click", () => {
-  addProject();
-});
-
-addEducationBtn.addEventListener("click", () => {
-  addEducation();
-});
-
-// removal for dynamic buttons
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("remove-skill-btn")) {
     e.target.parentElement.remove();
@@ -235,11 +219,11 @@ document.addEventListener("click", function (e) {
     updateEducation();
   }
 });
-document.getElementById('portfolioForm').addEventListener('submit', function (e) {
-  e.preventDefault();
 
-  const file = document.getElementById('userImage').files[0];
-  const oldImage = localStorage.getItem("imageDataURL") || "placeholder.png";
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const file = userImage.files[0];
+  const oldImage = localStorage.getItem("imageDataURL") || "/public/images/placeholder.png";
 
   const collectAndSave = (imageDataURL) => {
     const userData = {
@@ -249,92 +233,85 @@ document.getElementById('portfolioForm').addEventListener('submit', function (e)
       email: userEmail.value,
       linkedin: userLinkedIn.value,
       github: userGithub.value,
-      imageDataURL,
-      skills: [...document.querySelectorAll('.skill-input')].map(input => input.value),
-      experience: [...document.querySelectorAll('.experience-item')].map(item => ({
-        title: item.querySelector('.experience-title').value,
-        company: item.querySelector('.experience-company').value,
-        duration: item.querySelector('.experience-duration').value,
-        description: item.querySelector('.experience-description').value
+      skills: [...document.querySelectorAll(".skill-input")].map((input) => input.value),
+      experience: [...document.querySelectorAll(".experience-item")].map((item) => ({
+        title: item.querySelector(".experience-title").value,
+        company: item.querySelector(".experience-company").value,
+        duration: item.querySelector(".experience-duration").value,
+        description: item.querySelector(".experience-description").value,
       })),
-      projects: [...document.querySelectorAll('.project-item')].map(item => ({
-        title: item.querySelector('.project-title').value,
-        link: item.querySelector('.project-link').value,
-        techStack: item.querySelector('.project-techstack').value,
-        description: item.querySelector('.project-description').value
+      projects: [...document.querySelectorAll(".project-item")].map((item) => ({
+        title: item.querySelector(".project-title").value,
+        link: item.querySelector(".project-link").value,
+        techStack: item.querySelector(".project-techstack").value,
+        description: item.querySelector(".project-description").value,
       })),
-      education: [...document.querySelectorAll('.education-item')].map(item => ({
-      institution: item.querySelector('.education-institution').value,
-      degree:      item.querySelector('.education-degree').value,
-      duration:    item.querySelector('.education-duration').value,
-      description: item.querySelector('.education-description').value
-      }))
+      education: [...document.querySelectorAll(".education-item")].map((item) => ({
+        institution: item.querySelector(".education-institution").value,
+        degree: item.querySelector(".education-degree").value,
+        duration: item.querySelector(".education-duration").value,
+        description: item.querySelector(".education-description").value,
+      })),
     };
 
-    localStorage.setItem('portfolioData', JSON.stringify(userData));
-    localStorage.setItem('imageDataURL', imageDataURL); 
-    window.location.href = 'user-portfolio.html';
+    localStorage.setItem("portfolioData", JSON.stringify(userData));
+    localStorage.setItem("imageDataURL", imageDataURL);
+    window.location.href = "../pages/user-portfolio.html";
   };
 
   if (file && file.type.startsWith("image/")) {
     const reader = new FileReader();
-    reader.onload = function (e) {
-      collectAndSave(e.target.result);
-    };
+    reader.onload = (e) => collectAndSave(e.target.result);
     reader.readAsDataURL(file);
   } else {
     collectAndSave(oldImage);
   }
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("themeToggle");
   const resetBtn = document.getElementById("resetBtn");
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("nav-links");
+
   const storedImage = localStorage.getItem("imageDataURL");
+  previewImage.src = storedImage || "/public/images/placeholder.png";
 
-  // ✅ Use stored image if exists, otherwise fallback to placeholder
-  previewImage.src = storedImage || "public/images/placeholder.png";
-
-  
-  themeToggle.addEventListener("click", () => {
+  themeToggle?.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
     themeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
   });
 
-  menuToggle.addEventListener("click", () => {
+  menuToggle?.addEventListener("click", () => {
     navLinks.classList.toggle("show");
   });
 
-  resetBtn.addEventListener("click", () => {
-    const form = document.getElementById("portfolioForm");
+  resetBtn?.addEventListener("click", () => {
     if (form) form.reset();
-
-    document.getElementById("previewName").textContent = "Your Name";
-    document.getElementById("previewProfession").textContent = "Your Profession";
-    document.getElementById("previewBio").textContent = "A brief description about yourself will appear here.";
-    document.getElementById("previewSkills").innerHTML = `
-      <li>Skill-1</li><li>Skill-2</li><li>Skill-3</li>`;
-    document.getElementById("previewExperience").innerHTML = `
+    previewName.textContent = "Your Name";
+    previewProfession.textContent = "Your Profession";
+    previewBio.textContent = "A brief description about yourself will appear here.";
+    previewSkills.innerHTML = `<li>Skill-1</li><li>Skill-2</li><li>Skill-3</li>`;
+    previewExperience.innerHTML = `
       <div class="preview-experience-item">
-        <h5>Job Title</h5>
+        <h5>Job Title at Company</h5>
         <p class="duration">Jan 20XX - Dec 20YY</p>
         <p>Responsibilities and achievements...</p>
       </div>`;
-    document.getElementById("previewProjects").innerHTML = `
+    previewProjects.innerHTML = `
       <div class="preview-project-item">
         <h5>Project Title</h5>
         <a href="#" target="_blank">Project Link</a>
         <p class="tech-stack">Tech Stack: React, Node.js</p>
         <p>Brief description of the project...</p>
       </div>`;
-    document.getElementById("previewEmail").textContent = "your.email@example.com";
-    document.getElementById("previewLinkedIn").href = "#";
-    document.getElementById("previewLinkedIn").textContent = "LinkedIn Profile";
-    document.getElementById("previewGithub").href = "#";
-    document.getElementById("previewGithub").textContent = "GitHub Profile";
-    document.getElementById("previewImage").src = "/public/images/placeholder.png";
-
+    previewEmail.textContent = "your.email@example.com";
+    previewLinkedIn.href = "#";
+    previewLinkedIn.textContent = "LinkedIn Profile";
+    previewGithub.href = "#";
+    previewGithub.textContent = "GitHub Profile";
+    previewImage.src = "/public/images/placeholder.png";
+    localStorage.setItem("imageDataURL", "/public/images/placeholder.png");
+    userImage.value = "";
   });
 });
-

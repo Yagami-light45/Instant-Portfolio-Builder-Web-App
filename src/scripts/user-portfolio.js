@@ -68,9 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
            
             const displayImage = document.getElementById('displayImage');
-            if (displayImage) {
-                displayImage.src = data.imageDataURL || '../../public/images/placeholder.png';
-            }
+            const storedImage = localStorage.getItem('imageDataURL');
+            if (displayImage) {
+                displayImage.src = storedImage || '/public/images/placeholder.png';
+            }
 
             const skillsContainer = document.getElementById('displaySkills');
             if (skillsContainer && data.skills) {
