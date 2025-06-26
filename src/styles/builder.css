@@ -7,7 +7,7 @@ body {
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
-      scroll-behavior: smooth;
+      scroll-behavior: smooth; 
       box-sizing: border-box;
     }
 
@@ -245,6 +245,13 @@ body {
       top: 1.875rem;
       align-self: flex-start;
     }
+    #previewBio {
+    word-wrap: break-word; /* Ensures long words break to the next line */
+    overflow-wrap: break-word; /* Modern equivalent of word-wrap */
+    white-space: normal; /* Allows text to wrap naturally */
+    overflow: hidden; /* Prevents text from overflowing the container */
+   
+}
 
     .form-group {
       margin-bottom: 1.25rem;

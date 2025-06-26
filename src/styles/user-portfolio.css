@@ -1,10 +1,9 @@
-
-*{
-margin : 0;
-padding : 0;
-
+* {
+  margin: 0;
+  padding: 0;
 }  
- body {
+
+body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url('../../public/images/bgblur.png');
@@ -29,12 +28,12 @@ p {
 #about, #skills, #experience, #projects, #contact, #education {
     scroll-margin-top: 6rem;
 }
+
 .education-item {
     padding: 2rem ;
     margin-bottom: 1.5rem;
-    
-    
 }
+
 #education h2{
     padding-top: 1.5rem;
 }
@@ -46,6 +45,7 @@ p {
     color: #0056b3;
 }
 
+/* Navbar Styles */
 .glass-navbar {
   position: fixed;
   top: 0;
@@ -56,7 +56,7 @@ p {
   background-color: rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  padding: 0.8rem 0; /* Vertical spacing */
+  padding: 0.8rem 0;
   transition: background-color 0.8s ease, border-color 0.8s ease;
 }
 
@@ -66,15 +66,15 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem; 
+  padding: 0 2rem;
 }
 
-.logo { 
+.logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
   transition: color 0.8s ease;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -82,10 +82,10 @@ p {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.5rem;
+  gap: 2rem; /* Increased gap for better spacing */
   margin: 0;
   padding: 0;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .nav-links li a {
@@ -102,20 +102,62 @@ p {
 .navbar-buttons {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-shrink: 0; 
+  gap: 1.5rem; /* Increased gap for better spacing */
+  flex-shrink: 0;
 }
 
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #2c3e50;
-  cursor: pointer;
-  transition: color 0.8s ease;
+/* Download Options Button and Menu */
+.download-options {
+  position: relative;
 }
-  /* Dark Mode Toggle Button */
+
+.download-btn {
+  background-color: #e0e0e0;
+  border: 2px solid #333;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.download-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.download-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.download-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.download-options.active .download-menu {
+  display: block;
+}
+
+/* Dark Mode Toggle Button */
 .dark-mode-toggle {
     position: relative;
     background-color: #e0e0e0;
@@ -153,16 +195,22 @@ p {
     opacity: 0;
 }
 
-/* ==========================================================================
-   Content Sections
-   ========================================================================== */
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: color 0.8s ease;
+}
+
+/* Profile Section */
 .profile {
     text-align: center;
     margin-top: 6rem;
-    /* margin-bottom: 3rem; */
-    /* border: 1px solid #ccc; */
     border-radius: 10px;
-    /* padding: 1rem; */
 }
 
 .profile img {
@@ -181,6 +229,7 @@ p {
     transition: color 0.8s ease;
 }
 
+/* Section Styles */
 section {
     margin-bottom: 2rem;
     padding: 0.75rem 2rem 2rem 2rem;
@@ -194,11 +243,10 @@ section {
 
 section h2 {
     border-bottom: 2px solid #007BFF;
-    
-    /* margin-bottom: 0.5rem; */
     transition: border-color 0.8s ease;
 }
 
+/* Skills Section */
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -216,6 +264,7 @@ section h2 {
     transition: background-color 0.8s ease;
 }
 
+/* Experience, Project, and Education Items */
 .experience-item h3, .project-item h3 , .education-item h3 {
     color: #0056b3;
     transition: color 0.8s ease;
@@ -238,7 +287,7 @@ section h2 {
     transition: color 0.8s ease;
 }
 
-
+/* Footer */
 .footer {
   margin-top : 5rem;
     background: rgba(255, 255, 255, 0.5);
@@ -246,7 +295,6 @@ section h2 {
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.18);
     text-align: center;
-    margin-top:0;
     transition: background-color 0.8s ease, border-color 0.8s ease, color 0.8s ease;
 }
 
@@ -279,9 +327,10 @@ section h2 {
     transition: color 0.8s ease;
 }
 
+/* Dark Mode Styles */
 body.dark-mode {
     background-color: #0f1624;
-    background-image: url('../../public/images/bgblur.png');;
+    background-image: url('../../public/images/bgblur.png');
     color: #ffffff;
 }
 
@@ -304,11 +353,33 @@ body.dark-mode .footer-links a:hover {
 
 body.dark-mode .dark-mode-toggle {
     background-color: #2c3e50;
-    /* border-color: #ffffff; */
+    border-color: #ffffff;
 }
 
 body.dark-mode .dark-mode-toggle:hover {
     background-color: #34495e;
+}
+
+body.dark-mode .download-btn {
+  background-color: #2c3e50;
+  border-color: #ffffff;
+}
+
+body.dark-mode .download-btn:hover {
+  background-color: #384c5f;
+}
+
+body.dark-mode .download-menu {
+  background-color: #1a1a1a;
+  border-color: #444;
+}
+
+body.dark-mode .download-menu a {
+  color: #ffffff;
+}
+
+body.dark-mode .download-menu a:hover {
+  background-color: #2a2a2a;
 }
 
 body.dark-mode .sun-icon {
@@ -346,8 +417,6 @@ body.dark-mode .experience-item h3,
 body.dark-mode .project-item h3,
 body.dark-mode .project-item a,
 body.dark-mode .education-item h3 {
-
-
     color: #1e90ff;
 }
 
@@ -358,17 +427,12 @@ body.dark-mode .footer-note {
 }
 
 body.dark-mode .footer {
-  
-  
     background: rgba(10, 20, 40, 0.6);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top : -40px;
-    
 }
 
-
-
-
+/* Responsive Styles */
 @media(max-width: 768px) {
     .nav-links {
         display: none;
