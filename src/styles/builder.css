@@ -219,7 +219,7 @@ body {
       color: #222;
     }
 
-    /* Existing CSS from user, unchanged except for integration */
+  
     .input-section,
     .preview-section {
       flex: 1;
@@ -231,6 +231,7 @@ body {
       border-radius: 0.75rem;
       box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.4);
       border: 1px solid rgba(50, 50, 100, 0.5);
+      margin-bottom : 2rem;
     }
 
     body.light-mode .input-section,
@@ -246,10 +247,10 @@ body {
       align-self: flex-start;
     }
     #previewBio {
-    word-wrap: break-word; /* Ensures long words break to the next line */
-    overflow-wrap: break-word; /* Modern equivalent of word-wrap */
-    white-space: normal; /* Allows text to wrap naturally */
-    overflow: hidden; /* Prevents text from overflowing the container */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
+    overflow: hidden; 
    
 }
 
@@ -563,118 +564,143 @@ body {
     }
 
     /* Media Queries */
-    @media (max-width: 68.75rem) {
-      .hamburger {
-        display: block;
-      }
 
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 4.5rem;
-        right: 1.5rem;
-        flex-direction: column;
-        background: linear-gradient(90deg, rgba(30, 30, 50, 0.95), rgba(50, 30, 70, 0.95));
-        backdrop-filter: blur(0.3125rem);
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(140, 82, 255, 0.3);
-        width: 200px;
-        z-index: 999;
-      }
-
-      body.light-mode .nav-links {
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 255, 0.95));
-        border: 1px solid rgba(0, 123, 255, 0.2);
-      }
-
-      .nav-links.show {
-        display: flex;
-      }
-
-      .nav-links li a,
-      .nav-links li button {
-        font-size: 1rem;
-        padding: 0.75rem;
-        width: 100%;
-        text-align: left;
-      }
-
-      .nav-links li button#theme-toggle {
-        width: auto;
-        border-radius: 0.375rem;
-        padding: 0.5rem 1rem;
-      }
-
-      .input-section {
-        min-width: unset;
-        width: 90%;
-        max-width: 43.75rem;
-        padding: 2rem;
-      }
-
-      .preview-section {
-        position: static;
-        top: unset;
-        align-self: auto;
-        margin-top: 0;
-      }
+    /*Small Laptops (e.g., up to 1200px)*/
+    @media (max-width: 1200px) {
+        .container {
+            max-width: 95vw;
+            gap: 1.5rem;
+        }
+        .navbar {
+            margin-bottom : 1rem;      
+        }
+    }
+    /*Tablets*/
+    @media (max-width: 992px) {
+        body {
+            justify-content: flex-start;
+        }
+        .container {
+            flex-direction: column;
+            max-width: 100%;
+            padding: 0;
+            gap: 0;
+        }
+        .navbar {
+            width: auto;
+            margin: 0.75rem 1rem 0 1rem;
+            min-width: 0;
+        }
+        .input-section {
+            width: auto;
+            margin: 1.5rem 1rem 0 1rem;
+            min-width: 0;
+            margin-top: 1.5rem; 
+        }
+        .preview-section {
+            width: auto;
+            margin: 1.5rem 1rem 2rem 1rem;
+            min-width: 0;
+            position: static;
+            align-self: initial;
+        }
     }
 
-    @media (max-width: 37.5rem) {
-      body {
-        padding: 0.9375rem;
-      }
 
-      .input-section,
-      .preview-section {
-        padding: 1.25rem;
-      }
+    /* Mobiles */
+    @media (max-width: 768px) {
+        .input-section,
+        .preview-section {
+            padding: 1.5rem;
+        }
+        
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            width: 95%;
+            margin: auto;
+            background: rgba(25, 25, 55, 0.95);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+        body.light-mode .nav-links {
+            background: rgba(255, 255, 255, 0.98);
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .nav-links li {
+            width: 90%;
+            text-align: center;
+        }
+        .nav-links li:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+        .nav-links li a,
+        .nav-links li button {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hamburger {
+            display: block;
+        }
+        h1 { font-size: 2rem; }
+        .preview-header h3 { font-size: 1.8rem; }
+        .preview-header p { font-size: 1.1rem; }
+        .experience-item,
+        .project-item,
+        .education-item {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .experience-item > *,
+        .project-item > *,
+        .education-item > * {
+            margin-right: 0;
+            margin-bottom: 0.75rem;
+        }
+        .remove-skill-btn,
+        .remove-experience-btn,
+        .remove-project-btn,
+        .remove-education-btn {
+            margin-left: auto;
+            margin-top: 0.5rem;
+            align-self: flex-end;
+        }
+    }
 
-      h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.4rem;
-      }
-
-      .profile-image {
-        width: 6.75rem;
-        height: 6.75rem;
-      }
-
-      .skill-item,
-      .experience-item,
-      .project-item,
-      .education-item {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .skill-item input,
-      .experience-item input,
-      .experience-item textarea,
-      .project-item input,
-      .project-item textarea,
-      .education-item input,
-      .education-item textarea {
-        margin-right: 0;
-        margin-bottom: 0.625rem;
-      }
-
-      .remove-skill-btn,
-      .remove-experience-btn,
-      .remove-project-btn,
-      .remove-education-btn {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 0.3125rem;
-      }
-
-      button {
-        padding: 0.625rem 0.9375rem;
-        font-size: 0.95rem;
-      }
+    /*  Small Mobile Devices*/
+    @media (max-width: 480px) {
+        .navbar .brand {
+            font-size: 1.5rem;
+        }
+        .navbar {
+            padding: 0.75rem 1rem;
+        }
+        h1, h2 {
+            font-size: 1.6rem;
+        }
+        h4 {
+          font-size: 1.15rem;
+        }
+        .input-section,
+        .preview-section {
+            padding: 1.25rem;
+        }
+        .profile-image {
+            width: 7rem;
+            height: 7rem;
+        }
+        button {
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+        }
     }

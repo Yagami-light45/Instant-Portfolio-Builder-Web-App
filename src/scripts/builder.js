@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   menuToggle?.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
+    navLinks.classList.toggle("active");
   });
 
   resetBtn?.addEventListener("click", () => {

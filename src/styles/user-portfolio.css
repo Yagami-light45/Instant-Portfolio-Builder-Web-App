@@ -51,7 +51,7 @@ p {
   top: 0;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(8px);
   background-color: rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -82,7 +82,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 2rem; /* Increased gap for better spacing */
+  gap: 2rem; 
   margin: 0;
   padding: 0;
   flex-grow: 1;
@@ -431,8 +431,43 @@ body.dark-mode .footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top : -40px;
 }
-
 /* Responsive Styles */
+@media(max-width: 854px) {
+    .navbar-container {
+        padding: 0 0.75rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        gap: 1rem; 
+    }
+
+    /* .nav-links li a {
+        font-size: 0.9rem; 
+    } */
+
+    .navbar-buttons {
+        gap: 1rem; 
+    }
+
+    .download-btn, .dark-mode-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .download-btn i, .dark-mode-toggle i {
+        font-size: 1.2rem;
+    }
+    .footer{
+        margin-top: 1rem;
+        
+    }
+    
+}
+
 @media(max-width: 768px) {
     .nav-links {
         display: none;
@@ -442,10 +477,12 @@ body.dark-mode .footer {
         position: absolute;
         top: 68px;
         left: 0;
-        padding: 1rem 0;
+        padding: 0.75rem 0;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         transition: background-color 0.8s ease;
     }
+    
+    
 
     .nav-links.active {
         display: flex;
@@ -465,11 +502,32 @@ body.dark-mode .footer {
     body.dark-mode .nav-links {
         background-color: rgba(10, 20, 40, 0.95);
     }
+    .footer{
+        margin-top: 0.5rem;     
+    }
+    
 }
 
 @media (max-width: 480px) {
+
     h1 { font-size: 2rem; }
     .hero .subtitle { font-size: 1.2rem; }
-    .container { padding: 1rem; }
-    section { padding: 1.5rem; }
+    .container { padding: 0.75rem; }
+    section { padding: 1rem; }
+    .profile img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .nav-button {
+        font-size: 1.2rem; 
+    }
+    .glass-navbar{
+        height : 80px;
+    }
+    .footer{
+        margin-top: 0rem;
+        
+    }
+
 }
