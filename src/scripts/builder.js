@@ -138,7 +138,7 @@ function handleImageUpload(event) {
     reader.readAsDataURL(file);
   }
 }
-
+  //ADD BUTTONS LOGIC
 function addSkill() {
   const wrapper = document.createElement("div");
   wrapper.className = "skill-item form-group";

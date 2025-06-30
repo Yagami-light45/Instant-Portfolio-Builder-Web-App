@@ -445,9 +445,9 @@ body.dark-mode .footer {
         gap: 1rem; 
     }
 
-    /* .nav-links li a {
+    .nav-links li a {
         font-size: 0.9rem; 
-    } */
+    }
 
     .navbar-buttons {
         gap: 1rem; 

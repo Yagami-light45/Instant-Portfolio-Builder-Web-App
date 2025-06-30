@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile (Hamburger) Menu Logic
+  // Hamburger Menu Logic
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
