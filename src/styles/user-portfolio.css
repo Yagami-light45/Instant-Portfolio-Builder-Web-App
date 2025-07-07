@@ -269,6 +269,9 @@ section h2 {
     color: #0056b3;
     transition: color 0.8s ease;
 }
+.education-item,.project-item,.experience-item{
+    margin-bottom: 1.5rem;
+}
 
 .duration {
     font-style: italic;
