@@ -194,15 +194,16 @@ function updateProjects() {
             
             let linkHTML = '';
             if (link && isValidURL(link)) {
-                linkHTML = <a href="${link}" target="_blank" rel="noopener noreferrer">View Project</a>;
+                linkHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">View Project</a>`;
             } else if (link) {
-                linkHTML = <span style="color: #ff6b6b;">Invalid URL: ${link}</span>;
+                linkHTML = `<span style="color: #ff6b6b;">Invalid URL: ${link}</span>`;
             }
 
             let techStackHTML = '';
             if (techstack) {
-                techStackHTML = <p class="tech-stack">Tech Stack: ${techstack}</p>;
+                techStackHTML = `<p class="tech-stack">Tech Stack: ${techstack}</p>`;
             }
+
 
             div.innerHTML = `
                 <h5>${projectTitle}</h5>
